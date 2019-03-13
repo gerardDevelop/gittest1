@@ -6,19 +6,21 @@ const app = express();
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(express.static(path.join(__dirname, 'public')));
+//app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(express.static('public'))
 
 app.get('*', (req, res) =>{
   //res.sendFile(path.join(__dirname+'/public/index.html'));
   //res.sendFile('public/index.html');
-  res.send("hello hello hello");
-});
+  res.sendFile(path.join(__dirname + '/index.html'));
+}); 
 
 app.get('/other', (req, res) => {
   res.send("hello hello hello");
-});
+}); 
 
-const port = process.env.PORT || 80;
+const port = process.env.PORT || 8080;
 app.listen(port);
 
 console.log('App is listening on port ' + port);
